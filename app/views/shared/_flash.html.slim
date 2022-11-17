@@ -1,0 +1,13 @@
+/ -flash.each do |type, msg|
+/   div class="alert #{style(type)}" =msg.html_safe
+
+-flash.each do |type, msg|
+  -case type
+  -when "success"
+    div.alert.alert-success =msg
+  -when "notice"
+    div.alert.alert-primary =msg
+  -when "alert"
+    div.alert.alert-danger =msg
+  -else
+    div.alert.alert-light =msg
