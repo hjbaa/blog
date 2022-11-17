@@ -30,12 +30,6 @@
           | Currently waiting confirmation for:
           = resource.unconfirmed_email
 
-    .field.custom-control.custom-switch.row.mb-2
-      .col-sm-3.col-form-label
-        =f.label :type, 'Account type'
-      .col-sm-9.col-form-label
-        = f.select :type, %w[Student Teacher], { :selected => current_user.type }, class: 'form-select', disabled: true
-
     .field.mb-2.row
       .col-sm-3.col-form-label
         = f.label :password

@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'users/registrations' }
-  root 'diary#index'
+  root 'posts#index'
 
-  resources :diary
+  get '/users/:id/blog', to: 'diaries#show', as: :blog
+
+  resources :diaries, except: :show
+
+  resources :posts, only: %i[create destroy update]
 end

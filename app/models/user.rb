@@ -1,6 +1,9 @@
 class User < ApplicationRecord
-  has_one :diary, dependent: :destroy
-  has_many :posts, dependent: :destroy
+  # TODO: add avatar
+  # TODO: add votes mechanism (https://github.com/ryanto/acts_as_votable)
+
+  has_one :diary, foreign_key: 'author_id', dependent: :destroy
+  has_many :posts, foreign_key: 'author_id', dependent: :destroy
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

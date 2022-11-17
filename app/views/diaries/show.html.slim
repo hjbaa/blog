@@ -1,0 +1,7 @@
+-if current_user.diary.nil?
+  .justify-content-center.align-content-center.d-flex.flex-wrap.fs-1#new-diary
+    =link_to 'Start my blog', new_diary_path, class: 'btn btn-outline-secondary border-dark btn-lg'
+
+-else
+    .bg-primary.h-50
+      =render current_user.diary

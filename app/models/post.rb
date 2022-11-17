@@ -1,4 +1,6 @@
 class Post < ApplicationRecord
+  # TODO: add action text
+
   belongs_to :author, class_name: 'User'
   belongs_to :diary
 

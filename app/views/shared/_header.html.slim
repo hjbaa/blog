@@ -1,7 +1,11 @@
 .container
   nav class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start"
     ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"
-      li =link_to 'My blog', root_path, class: 'nav-link px-2 text-white'
+      -if current_user
+        li =link_to 'My blog', blog_path(current_user), class: 'nav-link px-2 text-white'
+        li =link_to 'My subscriptions', root_path, class: 'nav-link px-2 text-white'
+      li =link_to 'New posts', root_path, class: 'nav-link px-2 text-white'
+
 
     ul class="nav col-12 col-lg-auto mb-2 mb-md-0"
       - if user_signed_in?
@@ -11,8 +15,6 @@
 
           ul class="dropdown-menu"
             li = link_to 'Edit profile', edit_user_registration_path, class: 'dropdown-item'
-            li = link_to 'Show profile', root_path, class: 'dropdown-item disabled'
-
             li
               hr class="dropdown-divider"
 
