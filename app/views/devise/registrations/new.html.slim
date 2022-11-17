@@ -1,0 +1,12 @@
+h2
+  | Sign up
+= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+  = render "devise/shared/error_messages", resource: resource
+
+  =render "devise/shared/registrations_fields", f: f
+
+  .actions.mb-2
+    = f.submit "Sign up", class: 'btn btn-outline-primary'
+
+  = render "devise/shared/links"
+
