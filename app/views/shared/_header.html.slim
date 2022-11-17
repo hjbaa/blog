@@ -3,8 +3,8 @@
     ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"
       -if current_user
         li =link_to 'My blog', blog_path(current_user), class: 'nav-link px-2 text-white'
-        li =link_to 'My subscriptions', root_path, class: 'nav-link px-2 text-white'
-      li =link_to 'New posts', root_path, class: 'nav-link px-2 text-white'
+        li =link_to 'My subscriptions', root_path, class: 'nav-link px-2 text-white disabled'
+      li =link_to 'New posts', root_path, class: 'nav-link px-2 text-white disabled'
 
 
     ul class="nav col-12 col-lg-auto mb-2 mb-md-0"

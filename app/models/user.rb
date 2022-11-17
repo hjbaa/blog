@@ -1,7 +1,4 @@
 class User < ApplicationRecord
-  # TODO: add avatar
-  # TODO: add votes mechanism (https://github.com/ryanto/acts_as_votable)
-
   has_one :diary, foreign_key: 'author_id', dependent: :destroy
   has_many :posts, foreign_key: 'author_id', dependent: :destroy
 
