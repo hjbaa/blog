@@ -1,6 +1,6 @@
 class DiariesController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
-  before_action :find_diary, only: %i[destroy edit update]
+  before_action :find_diary, only: %i[destroy update]
 
   def index
     @diaries = Diary.all
@@ -15,16 +15,18 @@ class DiariesController < ApplicationController
   end
 
   def destroy
+    return head(:forbidden) unless current_user.author_of?(@diary)
+
     @diary.destroy
     flash[:success] = 'Your blog was destroyed!'
 
     redirect_to root_path
   end
 
-  def edit
-  end
-
   def update
+    return head(:forbidden) unless current_user.author_of?(@diary)
+
+    @diary.update(diary_params)
   end
 
   private

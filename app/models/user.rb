@@ -10,4 +10,8 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true, format: URI::MailTo::EMAIL_REGEXP
   validates :name, presence: true
   validates :last_name, presence: true
+
+  def author_of?(object)
+    id == object.author_id
+  end
 end

@@ -6,14 +6,26 @@
     .d-inline-block
       p.text-center ="#{diary.author.name} #{diary.author.last_name}'s blog"
     .d-inline-block
-      = link_to edit_diary_path(diary), class: 'icon-edit px-2', data_toggle: "tooltip", title: "Edit" do
+      = link_to '#', id: 'edit-diary-button', class: 'icon-edit px-2', data_toggle: "tooltip", title: "Edit" do
         i class="bi bi-pencil-square"
+
       = link_to diary_path(diary), class: 'icon-delete', data: { method: :delete, confirm: 'Are you sure?' },
                            data_toggle: "tooltip", title: "Delete" do
         i class="bi bi-trash"
 
   .fs-3
-    p =diary.description
+    -if current_user&.author_of?(diary)
+      .update-diary.hidden
+        .update-diary-errors
+          =render 'shared/errors', object: diary
+        .update-diary-form
+          =form_with model: diary, local: false do |f|
+            =render 'diaries/diary_fields', f: f
+
+            =f.submit 'Save', class: 'btn btn-outline-success'
+
+    .diary-content
+      p#diary-description ="Description: #{diary.description}"
 
 .posts-area
   =render diary.posts
