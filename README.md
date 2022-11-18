@@ -1,24 +1,16 @@
-# README
+# Тестовое задание для uchi.ru
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## ТЗ - Напишите простой блог на рельсе с минимальным функционалом (один автор, который выкладывает посты. Комментарии, сортировки, фильтры и основные рюшечки не обязательны, но остаются на ваше усмотрение и желание. Как и стилизация) b) выложить проект на Heroku
 
-Things you may want to cover:
+## Основная идея - сделать что-то на подобии социальной сети, где у каждого человека может быть свой блог.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Roadmap
+1. [x] Начать работу над проектом (Initial Commit) - _18.12.2022 в 0:49_
+2. [ ] Доделать основной функционал создания блогов
+3. [ ] Создание постов в блоге реализовать через AJAX
+4. [ ] Добавить ActionText для постов, подключить AWS S3 cloud
+5. [ ] Сделать функционал лайков (гем acts_as_votable)
+6. [ ] Добавить аватары (гем CarrierWave)
+7. [ ] Найти рабочий хостинг и выложить туда (идеал - heroku)
+8. [ ] Сделать что-то более-менее красивое
+9. [ ] Дедлайн - _19/20.11.2022_
