@@ -1,9 +1,19 @@
 .blog-header.p-4
-  .fs-2
-    p.text-center ="#{diary.author.name} #{diary.author.last_name}'s blog"
+  .fs-2.mb-4.d-inline-block.d-flex.justify-content-between
+    .d-inline-block.me-2
+      = link_to :back, class: 'icon-back', data_toggle: "tooltip", title: "Back" do
+        i class="bi bi-arrow-left"
+    .d-inline-block
+      p.text-center ="#{diary.author.name} #{diary.author.last_name}'s blog"
+    .d-inline-block
+      = link_to edit_diary_path(diary), class: 'icon-edit px-2', data_toggle: "tooltip", title: "Edit" do
+        i class="bi bi-pencil-square"
+      = link_to diary_path(diary), class: 'icon-delete', data: { method: :delete, confirm: 'Are you sure?' },
+                           data_toggle: "tooltip", title: "Delete" do
+        i class="bi bi-trash"
 
   .fs-3
     p =diary.description
 
-  .posts-area
-    =render diary.posts
+.posts-area
+  =render diary.posts

@@ -15,6 +15,10 @@ class DiariesController < ApplicationController
   end
 
   def destroy
+    @diary.destroy
+    flash[:success] = 'Your blog was destroyed!'
+
+    redirect_to root_path
   end
 
   def edit

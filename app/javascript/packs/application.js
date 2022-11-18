@@ -9,6 +9,7 @@ import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
 import 'bootstrap/js/dist/dropdown'
+import 'bootstrap-icons/font/bootstrap-icons.css'
 import 'packs/diaries/new-diary-form'
 
 Rails.start()
