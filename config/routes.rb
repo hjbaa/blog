@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   get '/users/:id/blog', to: 'diaries#show', as: :blog
 
-  resources :diaries, except: :show
+  resources :diaries, except: %i[show new]
 
   resources :posts, only: %i[create destroy update]
 end

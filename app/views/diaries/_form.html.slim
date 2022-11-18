@@ -1,6 +1,6 @@
 =render 'shared/errors', object: diary
 
-=form_with model: diary, local: true do |f|
+=form_with model: diary, local: false do |f|
   .row.mb-3
     .col-sm-2.col-form-label
       =f.label :description

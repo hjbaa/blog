@@ -1,1 +1,9 @@
-p hi
+.blog-header.p-4
+  .fs-2
+    p.text-center ="#{diary.author.name} #{diary.author.last_name}'s blog"
+
+  .fs-3
+    p =diary.description
+
+  .posts-area
+    =render diary.posts

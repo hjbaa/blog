@@ -9,6 +9,7 @@ import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
 import 'bootstrap/js/dist/dropdown'
+import 'packs/diaries/new-diary-form'
 
 Rails.start()
 Turbolinks.start()
