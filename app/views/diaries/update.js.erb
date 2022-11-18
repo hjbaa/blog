@@ -1,0 +1,10 @@
+$('.update-diary-errors').html('<%= render 'shared/errors', object: @diary %>');
+
+<% unless @diary.errors.present? %>
+  $('.update-diary').hide();
+
+  console.log('<%= @diary.description %>')
+
+  $('.diary-content').show();
+  $('#diary-description').html('<%= "Description: #{@diary.description}" %>')
+<% end %>

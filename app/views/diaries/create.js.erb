@@ -1,0 +1,7 @@
+$('.new-diary-errors').html('<%= render 'shared/errors', object: @diary %>');
+
+<% if @diary.persisted? %>
+  let diaryForm = $('#new-diary-form')
+  diaryForm.hide();
+  diaryForm.parent().html('<%= render @diary %>');
+<% end %>

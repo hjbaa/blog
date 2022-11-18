@@ -1,0 +1,31 @@
+.field.mb-2.row
+  .col-sm-2.col-form-label
+    = f.label :name
+  .col-sm-10.col-form-label
+    = f.text_field :name, autocomplete: "name", autofocus: true, class: 'form-control'
+
+  .field.mb-2.row
+    .col-sm-2.col-form-label
+      = f.label :last_name
+    .col-sm-10.col-form-label
+      = f.text_field :last_name, autocomplete: "last-name", class: 'form-control'
+
+  .field.mb-2.row
+    .col-sm-2.col-form-label
+      = f.label :email
+    .col-sm-10.col-form-label
+      = f.email_field :email, autocomplete: "email", class: 'form-control'
+
+  .field.mb-2.row
+    .col-sm-2.col-form-label
+      = f.label :password
+      - if @minimum_password_length
+        em =" (#{@minimum_password_length} characters minimum)"
+    .col-sm-10.col-form-label
+      = f.password_field :password, autocomplete: "new-password", class: 'form-control'
+
+  .field.mb-2.row
+    .col-sm-2.col-form-label
+      = f.label :password_confirmation
+    .col-sm-10.col-form-label
+      = f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control'

@@ -8,9 +8,10 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
-import 'jquery'
-import '@popperjs/core'
 import 'bootstrap/js/dist/dropdown'
+import 'bootstrap-icons/font/bootstrap-icons.css'
+import 'packs/diaries/new-diary-form'
+import 'packs/diaries/edit_diary'
 
 Rails.start()
 Turbolinks.start()

@@ -1,0 +1,6 @@
+=render 'shared/errors', object: diary
+
+=form_with model: diary, local: false do |f|
+  =render 'diaries/diary_fields', f: f
+
+  =f.submit 'Submit', class: 'btn btn-outline-primary btn-md mb-4'

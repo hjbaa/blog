@@ -1,0 +1,11 @@
+.card.mb-4
+  h5.card-header Recent
+  .card-body
+    h5.card-title
+      =post.title
+    p.card-subtitle
+      =post.body
+    small.card-text.text-muted
+      ="By #{post.author.name} #{post.author.last_name} at #{post.created_at}"
+  .card-footer
+    =link_to 'Read', root_path, class: 'btn btn-secondary'
