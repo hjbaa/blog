@@ -1,4 +1,4 @@
-.blog-header.p-4
+.blog-header.p-4.mb-5
   .fs-2.mb-4.d-inline-block.d-flex.justify-content-between
     .d-inline-block.me-2
       = link_to :back, class: 'icon-back', data_toggle: "tooltip", title: "Back" do
@@ -6,12 +6,13 @@
     .d-inline-block
       p.text-center ="#{diary.author.name} #{diary.author.last_name}'s blog"
     .d-inline-block
-      = link_to '#', id: 'edit-diary-button', class: 'icon-edit px-2', data_toggle: "tooltip", title: "Edit" do
-        i class="bi bi-pencil-square"
+      -if current_user&.author_of?(diary)
+        = link_to '#', id: 'edit-diary-button', class: 'icon-edit px-2', data_toggle: "tooltip", title: "Edit" do
+          i class="bi bi-pencil-square"
 
-      = link_to diary_path(diary), class: 'icon-delete', data: { method: :delete, confirm: 'Are you sure?' },
-                           data_toggle: "tooltip", title: "Delete" do
-        i class="bi bi-trash"
+        = link_to diary_path(diary), class: 'icon-delete', data: { method: :delete, confirm: 'Are you sure?' },
+                             data_toggle: "tooltip", title: "Delete" do
+          i class="bi bi-trash"
 
   .fs-3
     -if current_user&.author_of?(diary)
@@ -27,5 +28,15 @@
     .diary-content
       p#diary-description ="Description: #{diary.description}"
 
-.posts-area
-  =render diary.posts
+.posts
+  -if current_user&.author_of?(diary)
+    .new-post-area.mb-xl-5.border-secondary.border.px-4.pt-2.pb-4
+      p.fs-2.text-center
+        | New post
+      .new-post-errors
+
+      .new-post-form
+        =render 'posts/form', diary: diary, post: @post
+
+  .all-posts-area
+    =render diary.posts.order(created_at: :desc)

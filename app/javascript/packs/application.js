@@ -12,6 +12,7 @@ import 'bootstrap/js/dist/dropdown'
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import 'packs/diaries/new-diary-form'
 import 'packs/diaries/edit_diary'
+import 'packs/posts/edit_post'
 
 Rails.start()
 Turbolinks.start()

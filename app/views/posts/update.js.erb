@@ -1,0 +1,5 @@
+$('#post-' + '<%= @post.id %>' +'-errors').html('<%= render 'shared/errors', object: @post %>');
+
+<% unless @post.errors.present? %>
+  $('#post-' + '<%= @post.id %>').html('<%= j render @post %>')
+<% end %>

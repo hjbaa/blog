@@ -4,10 +4,18 @@ class DiariesController < ApplicationController
 
   def create
     @diary = Diary.create(diary_params.merge(author: current_user))
+    @post = Post.new
   end
 
   def show
-    @diary = current_user.diary || Diary.new(author: current_user)
+    @user = User.find(params[:id])
+
+    if current_user == @user
+      @diary = @user.diary || Diary.new(author: current_user)
+      @post = Post.new
+    else
+      @diary = @user.diary
+    end
   end
 
   def destroy
