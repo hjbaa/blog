@@ -21,7 +21,8 @@ div.pt-3 id="post-#{post.id}"
 
       div id="post-#{post.id}-content"
         p.fs-4 =post.body
-        small.card-text.text-muted
-          ="By #{post.author.name} #{post.author.last_name} at #{post.created_at}"
     .card-footer
-      =link_to 'Read', '#', class: 'btn btn-secondary'
+      p.fs-5
+        = "By\t"
+        = link_to "#{post.author.name} #{post.author.last_name}", blog_path(post.author)
+        |  at #{post.created_at.strftime("%M:%H, %-d.%-m.%-y")}
