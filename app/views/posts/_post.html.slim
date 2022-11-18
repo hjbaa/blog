@@ -1,7 +1,17 @@
-.pt-3
-  .card.mb-4
-    h5.card-header.card-title.fs-3
-      =post.title
+div.pt-3 id="post-#{post.id}"
+  div.card.mb-4
+    h5.card-header.card-title.fs-3.pt-2
+      .d-inline-block
+        p.text-center = post.title
+      -if current_user&.author_of?(post)
+        .d-inline-block
+          = link_to '#', id: "edit-post-#{post.id}-button", class: 'icon-edit px-2', data_toggle: "tooltip", title: "Edit" do
+            i class="bi bi-pencil-square"
+
+          = link_to diary_post_path(post.diary, post), class: 'icon-delete', data: { method: :delete, confirm: 'Are you sure?', remote: true  },
+                  data_toggle: "tooltip", title: "Delete" do
+            i class="bi bi-trash"
+
     .card-body
       p.fs-4 =post.body
       small.card-text.text-muted

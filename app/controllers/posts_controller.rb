@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :find_post, only: %i[destroy update]
 
   def index
-    @posts = Post.all.order(:created_at)
+    @posts = Post.all.order(created_at: :desc)
   end
 
   def create
@@ -12,6 +12,9 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    return head(:forbidden) unless current_user.author_of?(@post)
+
+    @post.destroy
   end
 
   def update

@@ -34,7 +34,7 @@
     .new-post-errors
 
     .new-post-form
-      =render 'posts/form', diary: diary, post: post
+      =render 'posts/form', diary: diary, post: @post
 
   .all-posts-area
     =render diary.posts.order(created_at: :desc)

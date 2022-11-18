@@ -4,6 +4,7 @@ class DiariesController < ApplicationController
 
   def create
     @diary = Diary.create(diary_params.merge(author: current_user))
+    @post = Post.new
   end
 
   def show

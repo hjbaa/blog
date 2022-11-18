@@ -2,7 +2,7 @@
   .hidden.mb-2.p-2#new-diary-form
     .new-diary-errors
     .fs-3
-      =render 'form', diary: Diary.new(author: current_user)
+      =render 'form', diary: @diary
 
   .justify-content-center.align-content-center.d-flex.flex-wrap.fs-1#new-diary-button-area
     =link_to 'Start my blog', '#', class: 'btn btn-outline-secondary border-dark btn-lg'
