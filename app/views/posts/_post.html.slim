@@ -20,7 +20,7 @@ div.pt-3 id="post-#{post.id}"
             =render 'posts/form', diary: post.diary, post: post
 
       div id="post-#{post.id}-content"
-        p.fs-4 =post.body
+        p.fs-4 = sanitize post.body.to_s
     .card-footer
       p.fs-5
         = "By\t"
