@@ -13,10 +13,11 @@ div.pt-3 id="post-#{post.id}"
             i class="bi bi-trash"
 
     .card-body
-      .hidden id="edit-post-#{post.id}"
-        .edit-post-errors id="post-#{post.id}-errors"
-        .edit-post-form
-          =render 'posts/form', diary: post.diary, post: post
+      -if current_user&.author_of?(post)
+        .hidden id="edit-post-#{post.id}"
+          .edit-post-errors id="post-#{post.id}-errors"
+          .edit-post-form
+            =render 'posts/form', diary: post.diary, post: post
 
       div id="post-#{post.id}-content"
         p.fs-4 =post.body

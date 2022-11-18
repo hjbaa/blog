@@ -8,8 +8,14 @@ class DiariesController < ApplicationController
   end
 
   def show
-    @diary = current_user.diary || Diary.new(author: current_user)
-    @post = Post.new
+    @user = User.find(params[:id])
+
+    if current_user == @user
+      @diary = @user.diary || Diary.new(author: current_user)
+      @post = Post.new
+    else
+      @diary = @user.diary
+    end
   end
 
   def destroy

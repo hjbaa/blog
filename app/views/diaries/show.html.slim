@@ -1,4 +1,4 @@
--if current_user.diary.nil?
+-if @user.diary.nil? && @user == current_user
   .hidden.mb-2.p-2#new-diary-form
     .new-diary-errors
     .fs-3
@@ -8,4 +8,5 @@
     =link_to 'Start my blog', '#', class: 'btn btn-outline-secondary border-dark btn-lg'
 
 -else
-    =render current_user.diary, post: @post
+  -if @user.diary
+    =render @user.diary, post: @post
