@@ -18,6 +18,9 @@ class PostsController < ApplicationController
   end
 
   def update
+    return head(:forbidden) unless current_user.author_of?(@post)
+
+    @post.update(post_params)
   end
 
   private

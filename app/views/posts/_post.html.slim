@@ -4,8 +4,8 @@ div.pt-3 id="post-#{post.id}"
       .d-inline-block
         p.text-center = post.title
       -if current_user&.author_of?(post)
-        .d-inline-block
-          = link_to '#', id: "edit-post-#{post.id}-button", class: 'icon-edit px-2', data_toggle: "tooltip", title: "Edit" do
+        .d-inline-block.post-links
+          = link_to '#', id: "edit-post-#{post.id}-button", class: 'icon-edit px-2', data_toggle: "tooltip", title: "Edit", data: { post_id: post.id } do
             i class="bi bi-pencil-square"
 
           = link_to diary_post_path(post.diary, post), class: 'icon-delete', data: { method: :delete, confirm: 'Are you sure?', remote: true  },
@@ -13,8 +13,14 @@ div.pt-3 id="post-#{post.id}"
             i class="bi bi-trash"
 
     .card-body
-      p.fs-4 =post.body
-      small.card-text.text-muted
-        ="By #{post.author.name} #{post.author.last_name} at #{post.created_at}"
+      .hidden id="edit-post-#{post.id}"
+        .edit-post-errors id="post-#{post.id}-errors"
+        .edit-post-form
+          =render 'posts/form', diary: post.diary, post: post
+
+      div id="post-#{post.id}-content"
+        p.fs-4 =post.body
+        small.card-text.text-muted
+          ="By #{post.author.name} #{post.author.last_name} at #{post.created_at}"
     .card-footer
       =link_to 'Read', '#', class: 'btn btn-secondary'
