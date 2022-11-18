@@ -1,5 +1,6 @@
 $('.new-post-errors').html('<%= render 'shared/errors', object: @post %>')
 
 <% if @post.persisted? %>
-  $('.all-posts-area').html('<%= j render @post.diary.posts.order(created_at: :desc) %>')
+  $('#new-post-form')[0].reset();
+  $('.all-posts-area').html('<%= j render @post.diary.posts.order(created_at: :desc) %>');
 <% end %>

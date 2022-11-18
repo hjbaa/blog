@@ -1,0 +1,16 @@
+//if ($('.subscribe-link')[0].innerText === 'Follow') {
+//    console.log('hello world!')
+//  .className = 'btn btn-outline-primary';
+//  .innerText = 'Unfollow';
+//} else {
+//  .className = 'btn btn-primary';
+//  .innerText = 'Follow';
+//}
+
+if (document.getElementById('subscribe-link').innerText === 'Follow') {
+    document.getElementById('subscribe-link').className = 'btn btn-outline-primary'
+    document.getElementById('subscribe-link').innerText = 'Unfollow'
+} else {
+    document.getElementById('subscribe-link').className = 'btn btn-primary'
+    document.getElementById('subscribe-link').innerText = 'Follow'
+}

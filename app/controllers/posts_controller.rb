@@ -6,6 +6,10 @@ class PostsController < ApplicationController
     @posts = Post.all.order(created_at: :desc)
   end
 
+  def subscription_index
+    @posts = Post.subscribed_by(current_user)
+  end
+
   def create
     @diary = Diary.find(params[:diary_id])
     @post = @diary.posts.create(post_params.merge(author: current_user))

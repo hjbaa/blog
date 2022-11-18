@@ -20,9 +20,9 @@ div.pt-3 id="post-#{post.id}"
             =render 'posts/form', diary: post.diary, post: post
 
       div id="post-#{post.id}-content"
-        p.fs-4 = sanitize post.body.to_s
+        p = sanitize post.body.to_s
     .card-footer
-      p.fs-5
+      p.fs-5.text-center
         = "By\t"
         = link_to "#{post.author.name} #{post.author.last_name}", blog_path(post.author)
         |  at #{post.created_at.strftime("%M:%H, %-d.%-m.%-y")}

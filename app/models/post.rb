@@ -1,6 +1,4 @@
 class Post < ApplicationRecord
-  # TODO: add action text
-
   belongs_to :author, class_name: 'User'
   belongs_to :diary
 
@@ -9,4 +7,6 @@ class Post < ApplicationRecord
 
   validates :title, presence: true
   validates :body, presence: true
+
+  scope :subscribed_by, ->(user) { where(author_id: Subscription.select(:followed_blogger_id).where(follower_id: user.id)).order(title: :desc) }
 end
