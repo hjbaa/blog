@@ -1,10 +1,6 @@
 class DiariesController < ApplicationController
-  before_action :authenticate_user!, except: %i[index show]
+  before_action :authenticate_user!, except: %i[show]
   before_action :find_diary, only: %i[destroy update]
-
-  def index
-    @diaries = Diary.all
-  end
 
   def create
     @diary = Diary.create(diary_params.merge(author: current_user))
