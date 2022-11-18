@@ -8,6 +8,7 @@ class DiariesController < ApplicationController
 
   def show
     @diary = current_user.diary || Diary.new(author: current_user)
+    @post = Post.new
   end
 
   def destroy

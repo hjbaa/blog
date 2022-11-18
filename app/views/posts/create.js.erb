@@ -1,0 +1,5 @@
+$('.new-post-errors').html('<%= render 'shared/errors', object: @post %>')
+
+<% if @post.persisted? %>
+  $('.all-posts-area').html('<%= j render @post.diary.posts.order(created_at: :desc) %>')
+<% end %>
