@@ -17,6 +17,8 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :last_name, presence: true
 
+  acts_as_voter
+
   def author_of?(object)
     id == object.author_id
   end

@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, except: :index
-  before_action :find_post, only: %i[destroy update]
+  before_action :find_post, only: %i[destroy update like dislike]
 
   def index
     @posts = Post.all.order(created_at: :desc)
@@ -25,6 +25,22 @@ class PostsController < ApplicationController
     return head(:forbidden) unless current_user.author_of?(@post)
 
     @post.update(post_params)
+  end
+
+  def like
+    if current_user.liked?(@post)
+      current_user.unlike @post
+    else
+      current_user.likes @post
+    end
+  end
+
+  def dislike
+    if current_user.disliked?(@post)
+      current_user.undislike @post
+    else
+      current_user.dislikes @post
+    end
   end
 
   private
