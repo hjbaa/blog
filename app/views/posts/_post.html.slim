@@ -28,16 +28,16 @@ div.pt-3 id="post-#{post.id}"
             = post.get_likes.size
           = link_to like_post_path(post), id: "like-post-#{post.id}", class: "px-1",
                   data_toggle: "tooltip", title: "Like", data: { method: :post, remote: true } do
-            i class="#{current_user.liked?(post) ? 'bi bi-hand-thumbs-up-fill' : 'bi bi-hand-thumbs-up'}"
+            i class="#{current_user&.liked?(post) ? 'bi bi-hand-thumbs-up-fill' : 'bi bi-hand-thumbs-up'}"
 
           span id = "post-#{post.id}-dislikes"
             = post.get_dislikes.size
           = link_to dislike_post_path(post), id: "dislike-post-#{post.id}", class: "px-1",
                   data_toggle: "tooltip", title: "Dislike", data: { method: :post, remote: true } do
-            i class="#{current_user.disliked?(post) ? 'bi bi-hand-thumbs-down-fill' : 'bi bi-hand-thumbs-down'}"
+            i class="#{current_user&.disliked?(post) ? 'bi bi-hand-thumbs-down-fill' : 'bi bi-hand-thumbs-down'}"
 
         .d-inline-block
           p.fs-5
             = "By\t"
             = link_to "#{post.author.name} #{post.author.last_name}", blog_path(post.author)
-            |  at #{post.created_at.strftime("%M:%H, %-d.%-m.%-y")}
+            |  at #{(post.created_at + 3.hours).strftime("%H:%M, %-d.%-m.%-y")}
