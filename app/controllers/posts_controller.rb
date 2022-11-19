@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, except: :index
+  before_action :authenticate_user!, except: %i[index]
   before_action :find_post, only: %i[destroy update like dislike]
 
   def index
