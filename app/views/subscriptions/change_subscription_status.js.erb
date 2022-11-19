@@ -1,7 +1,9 @@
 if (document.getElementById('subscribe-link').innerText === 'Follow') {
     document.getElementById('subscribe-link').className = 'btn btn-outline-primary'
     document.getElementById('subscribe-link').innerText = 'Unfollow'
+    document.getElementById('followers-count').innerText = (parseInt(document.getElementById('followers-count').innerText.match(/\d+/)) + 1).toString() + ' follower (-s)'
 } else {
     document.getElementById('subscribe-link').className = 'btn btn-primary'
     document.getElementById('subscribe-link').innerText = 'Follow'
+    document.getElementById('followers-count').innerText = (parseInt(document.getElementById('followers-count').innerText.match(/\d+/)) - 1).toString() + ' follower (-s)'
 }

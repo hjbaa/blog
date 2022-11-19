@@ -27,15 +27,22 @@
 
     .diary-content
       p#diary-description ="Description: #{diary.description}"
+  .d-flex.justify-content-between
+    .d-inline-block
+      .subscribers-count
+        p.fs-4#followers-count
+          | #{diary.author.followers.size} follower (-s)
 
-  -if current_user && !current_user.eql?(diary.author)
-    .fs-4.align-text-right
-      -if current_user.subscribed_at?(diary.author)
-        = link_to 'Unfollow', subscription_path(diary.author), class: 'btn btn-outline-primary',
-                  id: 'subscribe-link', data: { method: :post, remote: true }
-      -else
-        = link_to 'Follow', subscription_path(diary.author), class: 'btn btn-primary subscribe-link',
-                  id: 'subscribe-link', data: { method: :post, remote: true }
+    -if current_user && !current_user.eql?(diary.author)
+      .fs-4.align-text-right.d-inline-block
+        -if current_user.subscribed_at?(diary.author)
+          = link_to 'Unfollow', subscription_path(diary.author), class: 'btn btn-outline-primary',
+                    id: 'subscribe-link', data: { method: :post, remote: true }
+        -else
+          = link_to 'Follow', subscription_path(diary.author), class: 'btn btn-primary subscribe-link',
+                    id: 'subscribe-link', data: { method: :post, remote: true }
+
+
 
 
 .posts
