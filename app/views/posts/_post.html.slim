@@ -40,4 +40,4 @@ div.pt-3 id="post-#{post.id}"
           p.fs-5
             = "By\t"
             = link_to "#{post.author.name} #{post.author.last_name}", blog_path(post.author)
-            |  at #{post.created_at.strftime("%M:%H, %-d.%-m.%-y")}
+            |  at #{(post.created_at + 3.hours).strftime("%H:%M, %-d.%-m.%-y")}
