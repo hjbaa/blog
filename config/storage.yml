@@ -14,6 +14,15 @@ amazon:
   region: <%= Rails.application.credentials.dig(:aws, :region) %>
   bucket: <%= Rails.application.credentials.dig(:aws, :bucket) %>
 
+yandex:
+  service: S3
+  access_key_id: <%= Rails.application.credentials.dig(:yandex, :access_key_id) %>
+  secret_access_key: <%= Rails.application.credentials.dig(:yandex, :secret_access_key) %>
+  region: <%= Rails.application.credentials.dig(:yandex, :region) %>
+  bucket: <%= Rails.application.credentials.dig(:yandex, :bucket) %>
+  endpoint: 'https://storage.yandexcloud.net'
+  force_path_style: true
+
 # Remember not to checkin your GCS keyfile to a repository
 # google:
 #   service: GCS
