@@ -1,16 +1,22 @@
-if (document.getElementById('dislike-post-' + '<%= @post.id %>').firstChild.className.includes("fill")) {
-    document.getElementById('dislike-post-' + '<%= @post.id %>').firstChild.className = 'bi bi-hand-thumbs-up'
+if (document.getElementById('dislike-post-' + '<%= @post.id %>').firstChild.className.animVal.includes("fill")) {
+    document.getElementById('dislike-post-' + '<%= @post.id %>').firstChild.remove();
+    $('#dislike-post-' + '<%= @post.id %>').html('<%= render 'shared/icons/dislike_icon' %>')
 
     document.getElementById('post-' + '<%= @post.id %>' + '-dislikes')
         .innerText = Number(document.getElementById('post-' + '<%= @post.id %>' + '-dislikes').innerText) - 1
+
 } else {
-    if (document.getElementById('like-post-' + '<%= @post.id %>').firstChild.className.includes("fill")) {
-        document.getElementById('like-post-' + '<%= @post.id %>').firstChild.className = 'bi bi-hand-thumbs-up'
+    if (document.getElementById('like-post-' + '<%= @post.id %>').firstChild.className.animVal.includes("fill")) {
+
+        document.getElementById('like-post-' + '<%= @post.id %>').firstChild.remove();
+        $('#like-post-' + '<%= @post.id %>').html('<%= render 'shared/icons/like_icon' %>');
+
         document.getElementById('post-' + '<%= @post.id %>' + '-likes')
             .innerText = Number(document.getElementById('post-' + '<%= @post.id %>' + '-likes').innerText) - 1
     }
 
-    document.getElementById('dislike-post-' + '<%= @post.id %>').firstChild.className = 'bi bi-hand-thumbs-up-fill'
+    document.getElementById('dislike-post-' + '<%= @post.id %>').firstChild.remove();
+    $('#dislike-post-' + '<%= @post.id %>').html('<%= render 'shared/icons/dislike_fill_icon' %>')
 
     document.getElementById('post-' + '<%= @post.id %>' + '-dislikes')
         .innerText = Number(document.getElementById('post-' + '<%= @post.id %>' + '-dislikes').innerText) + 1
